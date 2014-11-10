@@ -1,0 +1,19 @@
+[user]
+	name = Matthew Montgomery
+	email = matthew@signed8bit.com
+[github]
+	user = signed8bit
+[core]
+	excludesfile = /Users/Matthew/.gitignore_global
+	autocrlf = input
+[diff]
+    tool = "bbdiff"
+[difftool]
+    prompt = false
+[difftool "bbdiff"]
+    cmd = /usr/local/bin/bbdiff --wait --resume "$REMOTE" "$LOCAL"
+[alias]
+  pu = !"git fetch origin -v; git fetch upstream -v; git merge upstream/master"
+  tagsbydate = !"git log --tags --simplify-by-decoration --pretty=\"format:%ai %d\""
+[color]
+	ui = auto
