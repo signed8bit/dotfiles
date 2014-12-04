@@ -3,8 +3,9 @@
 # -----------
 .DS_Store
 
-# ------------
-# IDE Specific
-# ------------
+# ------------------------
+# Developer Tools Specific
+# ------------------------
 .idea/
 *.iml
+.vagrant

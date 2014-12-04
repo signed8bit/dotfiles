@@ -52,9 +52,8 @@ export PROJECT_HOME="$HOME/Projects"
 source virtualenvwrapper.sh
 
 # Ruby
-export RUBY_HOME="/usr/local/Cellar/ruby/2.0.0-p247"
-export PATH="$RUBY_HOME/bin:$PATH"
-export PATH="$HOME/.gem/ruby/2.0.0/bin:$PATH"
+export RUBY_HOME="/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr"
+export GEM_HOME="/Library/Ruby/Gems/2.0.0/gems"
 
 # Node
 export NPM_HOME="/usr/local/share/npm"
