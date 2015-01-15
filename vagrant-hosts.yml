@@ -1,0 +1,17 @@
+---
+# file: vagrant.yml
+# VM config file for the Vagrant development environment
+
+hosts:
+    ubuntu:
+      private_ip: 10.0.0.10
+      memory: 1024
+      box: hashicorp/precise64
+      synced_folders:
+        - host_path: './'
+          guest_path: '/vagrant'
+          disabled: false
+      ports:
+        - host_port: 8080
+          guest_port: 80
+          protocol: tcp

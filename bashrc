@@ -64,8 +64,8 @@ export PATH="$NPM_HOME/bin:$PATH"
 export PATH="$PATH:/Applications/VMware Fusion.app/Contents/Library"
 
 # Vagrant
-# export VAGRANT_DEFAULT_PROVIDER="vmware_fusion"
-export VAGRANT_DEFAULT_PROVIDER="virtualbox"
+export VAGRANT_DEFAULT_PROVIDER="vmware_fusion"
+# export VAGRANT_DEFAULT_PROVIDER="virtualbox"
 export VAGRANT_VMWARE_CLONE_DIRECTORY="$HOME/Documents/Virtual Machines/VMware"
 
 # AWS CLI Scripting
@@ -132,3 +132,11 @@ run_gerritsetup() {
 }
 
 alias gerritsetup=run_gerritsetup
+
+# Vagrant Setup
+run_vgsetup() {
+    cp -i ~/.vagrantfile-template.rb ./Vagrantfile && \
+    cp -i ~/.vagrant-hosts.yml ./vagrant-hosts.yml
+}
+
+alias vgsetup=run_vgsetup
