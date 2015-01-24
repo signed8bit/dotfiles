@@ -12,7 +12,7 @@ export CLICOLOR='true'
 # ------
 # Editor
 # ------
-export EDITOR="/usr/local/bin/bbedit-editor"
+export EDITOR="bbedit --wait --resume"
 
 # ----
 # Path
@@ -65,7 +65,6 @@ export PATH="$PATH:/Applications/VMware Fusion.app/Contents/Library"
 
 # Vagrant
 export VAGRANT_DEFAULT_PROVIDER="vmware_fusion"
-# export VAGRANT_DEFAULT_PROVIDER="virtualbox"
 export VAGRANT_VMWARE_CLONE_DIRECTORY="$HOME/Documents/Virtual Machines/VMware"
 
 # AWS CLI Scripting
