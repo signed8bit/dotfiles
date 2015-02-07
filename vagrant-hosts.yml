@@ -1,5 +1,5 @@
 ---
-# file: vagrant.yml
+# file: vagrant-hosts.yml
 # VM config file for the Vagrant development environment
 
 hosts:

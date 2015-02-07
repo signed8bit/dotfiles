@@ -26,6 +26,16 @@ export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin"
 # Set a more reasonable file limit
 ulimit -n 1024
 
+# Python
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+
+export PYENV_ROOT="/usr/local/opt/pyenv"
+export PATH="/usr/local/opt/ccache/libexec:$PATH"
+export WORKON_HOME="$HOME/.virtualenvs"
+export PROJECT_HOME="$HOME/Projects"
+
+source virtualenvwrapper.sh
+
 # Java
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/1.7.0/Contents/Home"
 export PATH="$JAVA_HOME/bin:$PATH"
@@ -46,14 +56,10 @@ export PATH="$BUCK_HOME/bin:$PATH"
 # Gerrit
 export GERRIT_HOME="$HOME/Projects/gerrit/gerrit-testsite"
 
-# Python
-export WORKON_HOME="$HOME/.virtualenvs"
-export PROJECT_HOME="$HOME/Projects"
-source virtualenvwrapper.sh
-
 # Ruby
 export RUBY_HOME="/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr"
 export GEM_HOME="/Library/Ruby/Gems/2.0.0/gems"
+export PATH="/Users/Mattmont/.gem/ruby/2.0.0/bin:$PATH"
 
 # Node
 export NPM_HOME="/usr/local/share/npm"
