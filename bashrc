@@ -37,7 +37,7 @@ export PROJECT_HOME="$HOME/Projects"
 source virtualenvwrapper.sh
 
 # Java
-export JAVA_HOME="/Library/Java/JavaVirtualMachines/1.7.0/Contents/Home"
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/1.8.0/Contents/Home"
 export PATH="$JAVA_HOME/bin:$PATH"
 
 # Maven
@@ -53,13 +53,15 @@ export PATH="$ANT_HOME/bin:$PATH"
 export BUCK_HOME="$HOME/Projects/buck"
 export PATH="$BUCK_HOME/bin:$PATH"
 
+source "$BUCK_HOME/scripts/buck-completion.bash"
+
 # Gerrit
-export GERRIT_HOME="$HOME/Projects/gerrit/gerrit-testsite"
+export GERRIT_HOME="$HOME/Projects/gerrit"
 
 # Ruby
 export RUBY_HOME="/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr"
 export GEM_HOME="/Library/Ruby/Gems/2.0.0/gems"
-export PATH="/Users/Mattmont/.gem/ruby/2.0.0/bin:$PATH"
+export PATH="$HOME/.gem/ruby/2.0.0/bin:$PATH"
 
 # Node
 export NPM_HOME="/usr/local/share/npm"
@@ -67,11 +69,12 @@ export NODE_PATH="$NPM_HOME/lib/node_modules"
 export PATH="$NPM_HOME/bin:$PATH"
 
 # VMware Fusion
+export VMWAREVM_HOME="$HOME/Documents/Virtual Machines/VMware"
 export PATH="$PATH:/Applications/VMware Fusion.app/Contents/Library"
 
 # Vagrant
 export VAGRANT_DEFAULT_PROVIDER="vmware_fusion"
-export VAGRANT_VMWARE_CLONE_DIRECTORY="$HOME/Documents/Virtual Machines/VMware"
+export VAGRANT_VMWARE_CLONE_DIRECTORY="${VMWAREVM_HOME}"
 
 # AWS CLI Scripting
 export PATH="$HOME/Projects/scripting/aws-cli-scripting/bin:$PATH"
@@ -109,6 +112,13 @@ alias fixopenwith="/System/Library/Frameworks/CoreServices.framework/Frameworks/
 # -----------
 # Development
 # -----------
+
+# VMware Fusion
+run_vmrun() {
+    /Applications/VMware\ Fusion.app/Contents/Library/vmrun ${1} "${VMWAREVM_HOME}/${2}.vmwarevm" nogui
+}
+
+# alias vmrun=run_vmrun
 
 # MySQL
 alias start-mysql="/usr/local/bin/mysql.server start"

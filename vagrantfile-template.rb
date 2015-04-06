@@ -21,11 +21,15 @@ Vagrant.configure('2') do |config|
 
             # Host
             host.vm.box = host_config['box']
-            host.vm.network 'private_network', :ip => host_config['private_ip']
             host.vm.host_name = "#{host_name}.local"
-
+            
             if Vagrant.has_plugin?("vagrant-hostmanager")
                 host.hostmanager.aliases = ["#{host_name}"]
+            end
+
+            # Private Networks
+            if host_config['private_networks']
+                host.vm.network 'private_network', :ip => host_config['private_ip']
             end
 
             # Synced Folders
