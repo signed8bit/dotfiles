@@ -29,7 +29,9 @@ Vagrant.configure('2') do |config|
 
             # Private Networks
             if host_config['private_networks']
-                host.vm.network 'private_network', :ip => host_config['private_ip']
+                host_config['private_networks'].each do |private_network|
+                    host.vm.network 'private_network', :ip => private_network['private_ip']
+                end
             end
 
             # Synced Folders
