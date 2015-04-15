@@ -5,6 +5,7 @@
 hosts:
   ubuntu:
     memory: 1024
+    numvcpus: 1
     box: hashicorp/precise64
     private_networks:
       - private_ip: 10.2.0.10
