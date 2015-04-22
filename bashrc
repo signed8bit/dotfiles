@@ -19,12 +19,14 @@ export EDITOR="bbedit --wait --resume"
 # ----
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin"
 
+# Set a more reasonable file limit
+ulimit -n 1024
+
 # -----------------------
 # Development Environment
 # -----------------------
 
-# Set a more reasonable file limit
-ulimit -n 1024
+source "$HOME/.gitcompletion"
 
 # Python
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
