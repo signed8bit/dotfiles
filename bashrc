@@ -2,7 +2,7 @@
 ## Prompt
 ## ------
 
-export PS1="\u@\h [\W] % " 
+export PS1="\u@\h [\W] % "
 
 ## -----
 ## Color
@@ -30,7 +30,6 @@ ulimit -n 1024
 source "/usr/local/etc/bash_completion.d/git-completion.bash"
 
 ## Homebrew pyenv
-export PYENV_VERSION=3.4.3
 export PYENV_ROOT=/usr/local/var/pyenv
 
 export WORKON_HOME="$HOME/.virtualenvs"
@@ -116,12 +115,12 @@ alias fixopenwith="/System/Library/Frameworks/CoreServices.framework/Frameworks/
 
 ## OpenStack
 run_osapi() {
-    pathToFile=$HOME/.openstack/${1}.sh
+    pathToFile=${HOME}/.openstack/${1}-openrc.sh
 
     if [[ -f "${pathToFile}" ]]; then
-        source ${pathToFile}   
+        source ${pathToFile}
     else
-       echo "Usage: osapi [profile]"
+       echo "Usage: osapi [project]"
     fi
 }
 
