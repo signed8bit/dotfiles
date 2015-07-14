@@ -143,10 +143,10 @@ run_vgsetup() {
 alias vgsetup=run_vgsetup
 
 ## Homebrew pyenv init
-if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
-
-## Homebrew pyenv-virtualenvwrapper init
-if which pyenv > /dev/null; then eval "$(pyenv virtualenvwrapper -)"; fi
+if which pyenv > /dev/null; then
+    eval "$(pyenv init -)"
+    pyenv virtualenvwrapper
+fi
 
 ## Homebrew rbenv init
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
