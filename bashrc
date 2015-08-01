@@ -115,12 +115,16 @@ alias fixopenwith="/System/Library/Frameworks/CoreServices.framework/Frameworks/
 
 ## OpenStack
 run_osapi() {
-    pathToFile=${HOME}/.openstack/${1}-openrc.sh
+    local config_dir=${HOME}/.openstack
+    local path_to_file=${config_dir}/${1}-openrc.sh
 
-    if [[ -f "${pathToFile}" ]]; then
-        source ${pathToFile}
+    if [[ -f "${path_to_file}" ]]; then
+        workon osapi
+        source ${path_to_file}
     else
        echo "Usage: osapi [project]"
+       echo "Available Projects:"
+       echo `cd ${config_dir} && for i in *.sh; do echo ${i%-openrc*} ; done`
     fi
 }
 
