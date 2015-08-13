@@ -27,7 +27,7 @@ ulimit -n 1024
 ## -----------------------
 
 ## Homebrew Git Completion
-source "/usr/local/etc/bash_completion.d/git-completion.bash"
+. "/usr/local/etc/bash_completion.d/git-completion.bash"
 
 ## Homebrew pyenv
 export PYENV_ROOT=/usr/local/var/pyenv
@@ -56,7 +56,7 @@ export PATH="$ANT_HOME/bin:$PATH"
 # export BUCK_HOME="$HOME/Projects/buck"
 # export PATH="$BUCK_HOME/bin:$PATH"
 
-# source "$BUCK_HOME/scripts/buck-completion.bash"
+# . "$BUCK_HOME/scripts/buck-completion.bash"
 
 ## Ruby
 # export RUBY_HOME="/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr"
@@ -120,7 +120,7 @@ run_osapi() {
 
     if [[ -f "${path_to_file}" ]]; then
         workon osapi
-        source ${path_to_file}
+        . ${path_to_file}
     else
        echo "Usage: osapi [project]"
        echo "Available Projects:"
