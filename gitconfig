@@ -17,3 +17,5 @@
 [alias]
   pu = !"git fetch origin -v; git fetch upstream -v; git merge upstream/master"
   tagsbydate = !"git log --tags --simplify-by-decoration --pretty=\"format:%ai %d\""
+[push]
+	default = matching
