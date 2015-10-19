@@ -22,3 +22,5 @@
   ugh = !"git commit -a --amend --no-edit"
 [http]
 	cookiefile = /Users/Mattmont/.gitcookies
+[push]
+	default = matching

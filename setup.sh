@@ -2,7 +2,7 @@
 
 echo -e "\n>> Creating symlinks"
 for file in [a-zA-Z]* ; do
-    if [[ "$file" != "setup.sh" && "$file" != "README.md" && "$file" != "env" && "$file" != "LICENSE.txt" ]] ; then
+    if [[ "$file" != "setup.sh" && "$file" != "README.md" && "$file" != "LICENSE.txt" && "$file" != "dotfiles.iml" ]] ; then
         if [[ -h ~/."$file" ]] ; then
             # symlink, remove it since it will be re-created anyway
             echo "  Removing symbolic link ~/.$file"
