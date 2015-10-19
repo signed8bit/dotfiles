@@ -15,5 +15,10 @@
 [color]
 	ui = auto
 [alias]
+  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ci) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --all
   pu = !"git fetch origin -v; git fetch upstream -v; git merge upstream/master"
   tagsbydate = !"git log --tags --simplify-by-decoration --pretty=\"format:%ai %d\""
+  nuke = !"git reset --hard; git clean -dxf"
+  ugh = !"git commit -a --amend --no-edit"
+[http]
+	cookiefile = /Users/Mattmont/.gitcookies
