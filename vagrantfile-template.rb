@@ -3,7 +3,7 @@
 
 require 'yaml'
 
-$env = YAML::load_file('vagrant-hosts.yml')
+$env = YAML::load_file('vagrant-hosts.yaml')
 
 Vagrant.configure('2') do |config|
 

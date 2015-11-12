@@ -2,7 +2,11 @@
 ## Prompt
 ## ------
 
-export PS1="\u@\h [\W] % "
+##export PS1="\u@\h [\W] % "
+
+if [ -f /usr/local/share/liquidprompt ]; then
+	. /usr/local/share/liquidprompt
+fi
 
 ## -----
 ## Color
@@ -141,7 +145,7 @@ alias gerritsetup=run_gerritsetup
 ## Vagrant Setup
 run_vgsetup() {
     cp -i ~/.vagrantfile-template.rb ./Vagrantfile && \
-    cp -i ~/.vagrant-hosts.yml ./vagrant-hosts.yml
+    cp -i ~/.vagrant-hosts.yaml ./vagrant-hosts.yaml
 }
 
 alias vgsetup=run_vgsetup
