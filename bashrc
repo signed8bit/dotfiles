@@ -1,9 +1,6 @@
 ## ------
 ## Prompt
 ## ------
-
-##export PS1="\u@\h [\W] % "
-
 if [ -f /usr/local/share/liquidprompt ]; then
 	. /usr/local/share/liquidprompt
 fi
@@ -44,7 +41,7 @@ export RBENV_VERSION=2.2.2
 export RBENV_ROOT=/usr/local/var/rbenv
 
 ## Java
-export JAVA_HOME="/Library/Java/JavaVirtualMachines/1.8.0"
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/1.8"
 export PATH="$JAVA_HOME/bin:$PATH"
 
 ## Maven

@@ -20,6 +20,7 @@
   tagsbydate = !"git log --tags --simplify-by-decoration --pretty=\"format:%ai %d\""
   nuke = !"git reset --hard; git clean -dxf"
   ugh = !"git commit -a --amend --no-edit"
+  umod = !"git submodule update; git clean -fdx"
 [http]
 	cookiefile = /Users/Mattmont/.gitcookies
 [push]
