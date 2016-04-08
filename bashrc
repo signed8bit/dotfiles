@@ -41,17 +41,17 @@ export RBENV_VERSION=2.2.2
 export RBENV_ROOT=/usr/local/var/rbenv
 
 ## Java
-export JAVA_HOME="/Library/Java/JavaVirtualMachines/1.8"
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/1.8.0/Contents/Home"
 export PATH="$JAVA_HOME/bin:$PATH"
 
 ## Maven
-export M2_HOME="/usr/local/maven"
-export MAVEN_OPTS="-Xmx512m"
-export PATH="$M2_HOME/bin:$PATH"
+# export M2_HOME="/usr/local/Cellar/maven/current/libexec"
+# export MAVEN_OPTS="-Xmx512m"
+# export PATH="$M2_HOME/bin:$PATH"
 
 ## Ant
-export ANT_HOME="/usr/local/ant"
-export PATH="$ANT_HOME/bin:$PATH"
+# export ANT_HOME="/usr/local/Cellar/ant/current/libexec"
+# export PATH="$ANT_HOME/bin:$PATH"
 
 ## Buck
 # export BUCK_HOME="$HOME/Projects/buck"
