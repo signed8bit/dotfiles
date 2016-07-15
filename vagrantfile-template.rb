@@ -3,7 +3,8 @@
 
 require 'yaml'
 
-$env = YAML::load_file('vagrant-hosts.yaml')
+vagrantdir = File.expand_path(File.dirname(__FILE__))
+$env = YAML::load_file(vagrantdir + '/vagrant-hosts.yaml')
 
 Vagrant.configure('2') do |config|
 
@@ -22,7 +23,7 @@ Vagrant.configure('2') do |config|
             # Host
             host.vm.box = host_config['box']
             host.vm.host_name = "#{host_name}.local"
-            
+
             if Vagrant.has_plugin?("vagrant-hostmanager")
                 host.hostmanager.aliases = ["#{host_name}"]
             end
