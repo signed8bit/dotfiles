@@ -27,8 +27,10 @@ ulimit -n 1024
 ## Development Environment
 ## -----------------------
 
-## Homebrew Git Completion
-. "/usr/local/etc/bash_completion.d/git-completion.bash"
+## Homebrew Bash Completion
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+. $(brew --prefix)/etc/bash_completion
+fi
 
 ## Homebrew pyenv
 export PYENV_ROOT=/usr/local/var/pyenv
@@ -99,6 +101,9 @@ alias recent="ls -lthr | tail"
 alias md5="openssl md5"
 alias vg="vagrant"
 alias dpaste="curl -F 'content=<-' http://dpaste.cisco.com/api/"
+alias start-work="sudo netloc work && sudo ifconfig en1 down && sudo ifconfig en1 up"
+alias stop-work="sudo netloc home"
+alias fix-work="sudo ifconfig en1 down && sudo ifconfig en1 up"
 
 alias grepjars="find ./ -name \"*.jar\" -exec echo {} \; -exec jar -tf {} \; | grep -e \".jar\" -e $1"
 
