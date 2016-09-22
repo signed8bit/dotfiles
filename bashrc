@@ -39,7 +39,7 @@ export WORKON_HOME="$HOME/.virtualenvs"
 export PROJECT_HOME="$HOME/Projects"
 
 ## Homebrew rbenv
-export RBENV_VERSION=2.2.2
+export RBENV_VERSION=2.3.1
 export RBENV_ROOT=/usr/local/var/rbenv
 
 ## Java
