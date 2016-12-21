@@ -23,6 +23,13 @@ export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin"
 ## Set a more reasonable file limit
 ulimit -n 1024
 
+## ---
+## SSH
+## ---
+
+# Load identities
+ssh-add -K ~/.ssh/id_rsa 2>/dev/null;
+
 ## -----------------------
 ## Development Environment
 ## -----------------------
