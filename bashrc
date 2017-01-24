@@ -40,13 +40,14 @@ if [ -f $(brew --prefix)/etc/bash_completion ]; then
 fi
 
 ## Homebrew pyenv
+export PYENV_VERSION=2.7.13
 export PYENV_ROOT=/usr/local/var/pyenv
 
 export WORKON_HOME="$HOME/.virtualenvs"
 export PROJECT_HOME="$HOME/Projects"
 
 ## Homebrew rbenv
-export RBENV_VERSION=2.3.1
+export RBENV_VERSION=2.4.0
 export RBENV_ROOT=/usr/local/var/rbenv
 
 ## Java
