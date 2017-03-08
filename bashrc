@@ -102,6 +102,7 @@ export VAGRANT_VMWARE_CLONE_DIRECTORY="${VMWAREVM_HOME}"
 ## -------
 
 ## Utility
+alias os="openstack"
 alias cls="clear"
 alias rm="rm -i"
 alias bb="bbedit"
@@ -112,6 +113,7 @@ alias dpaste="curl -F 'content=<-' http://dpaste.cisco.com/api/"
 alias start-work="sudo netloc work && sudo ifconfig en1 down && sudo ifconfig en1 up"
 alias stop-work="sudo netloc home"
 alias fix-work="sudo ifconfig en1 down && sudo ifconfig en1 up"
+alias sha256sum="shasum -a 256"
 
 alias grepjars="find ./ -name \"*.jar\" -exec echo {} \; -exec jar -tf {} \; | grep -e \".jar\" -e $1"
 
