@@ -5,7 +5,7 @@
 	user = signed8bit
 [core]
 	excludesfile = ~/.gitignore_global
-	autocrlf = input
+	autocrlf = false
 [diff]
     tool = "bbdiff"
 [difftool]

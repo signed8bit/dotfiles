@@ -125,6 +125,13 @@ alias fixopenwith="/System/Library/Frameworks/CoreServices.framework/Frameworks/
 
 #Tip: add 'alias cd="pushd &> /dev/null"' to your .bashrc; when you cd to a #directory you'll always be able to 'popd' back where you started.
 
+##
+# Docker
+##
+
+# Remove all Docker containers that have exited
+alias docker-purge="docker rm -v $(docker ps -a -q -f status=exited)"
+
 ## -----------
 ## Development
 ## -----------
