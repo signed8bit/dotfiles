@@ -1,107 +1,28 @@
-## ------
+## General Setup #########################################################################
+
 ## Prompt
-## ------
 if [ -f /usr/local/share/liquidprompt ]; then
 	. /usr/local/share/liquidprompt
 fi
 
-## -----
 ## Color
-## -----
 export CLICOLOR='true'
 
-## ------
 ## Editor
-## ------
 export EDITOR="bbedit --wait --resume"
 
-## ----
 ## Path
-## ----
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin"
 
 ## Set a more reasonable file limit
 ulimit -n 1024
 
-## ---
-## SSH
-## ---
-
-# Load identities
+## Load SSH identities
 ssh-add -K ~/.ssh/id_rsa 2>/dev/null;
 
-## -----------------------
-## Development Environment
-## -----------------------
 
-## Homebrew Bash Completion
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-. $(brew --prefix)/etc/bash_completion
-fi
+## Aliases ###############################################################################
 
-## Homebrew pyenv
-export PYENV_VERSION=2.7.13
-export PYENV_ROOT=/usr/local/var/pyenv
-
-export WORKON_HOME="$HOME/.virtualenvs"
-export PROJECT_HOME="$HOME/Projects"
-
-## Homebrew rbenv
-export RBENV_VERSION=2.4.1
-export RBENV_ROOT=/usr/local/var/rbenv
-
-## Java
-export JAVA_HOME="/Library/Java/JavaVirtualMachines/1.8.0/Contents/Home"
-export PATH="$JAVA_HOME/bin:$PATH"
-
-## Maven
-# export M2_HOME="/usr/local/Cellar/maven/current/libexec"
-# export MAVEN_OPTS="-Xmx512m"
-# export PATH="$M2_HOME/bin:$PATH"
-
-## Ant
-# export ANT_HOME="/usr/local/Cellar/ant/current/libexec"
-# export PATH="$ANT_HOME/bin:$PATH"
-
-## Buck
-# export BUCK_HOME="$HOME/Projects/buck"
-# export PATH="$BUCK_HOME/bin:$PATH"
-
-# . "$BUCK_HOME/scripts/buck-completion.bash"
-
-## Ruby
-# export RUBY_HOME="/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr"
-# export GEM_HOME="/Library/Ruby/Gems/2.0.0/gems"
-# export PATH="$HOME/.gem/ruby/2.0.0/bin:$PATH"
-
-## Node
-# export NPM_HOME="/usr/local/share/npm"
-# export NODE_PATH="$NPM_HOME/lib/node_modules"
-# export PATH="$NPM_HOME/bin:$PATH"
-
-## VMware Fusion
-export VMWAREVM_HOME="$HOME/Documents/Virtual Machines/VMware"
-export PATH="$PATH:/Applications/VMware Fusion.app/Contents/Library"
-
-## Vagrant
-export VAGRANT_DEFAULT_PROVIDER="virtualbox"
-export VAGRANT_VMWARE_CLONE_DIRECTORY="${VMWAREVM_HOME}"
-
-## AWS CLI Scripting
-# export PATH="$HOME/Projects/scripting/aws-cli-scripting/bin:$PATH"
-# export EC2_SSH_USER="ubuntu"
-# export EC2_SSH_PROFILE="default"
-
-## Needed to work around errors with the newer clang that comes with Xcode 5.1
-# export ARCHFLAGS="-Wno-error=unused-command-line-argument-hard-error-in-future"
-
-## Aliases --------------------------------------------------------------------
-
-## -------
-## General
-## -------
-
-## Utility
 alias os="openstack"
 alias cls="clear"
 alias rm="rm -i"
@@ -125,16 +46,8 @@ alias fixopenwith="/System/Library/Frameworks/CoreServices.framework/Frameworks/
 
 #Tip: add 'alias cd="pushd &> /dev/null"' to your .bashrc; when you cd to a #directory you'll always be able to 'popd' back where you started.
 
-##
-# Docker
-##
-
 # Remove all Docker containers that have exited
 alias docker-purge="docker rm -v $(docker ps -a -q -f status=exited)"
-
-## -----------
-## Development
-## -----------
 
 ## OpenStack
 run_osapi() {
@@ -168,6 +81,51 @@ run_vgsetup() {
 }
 
 alias vgsetup=run_vgsetup
+
+
+## Development ###########################################################################
+
+## Homebrew Bash Completion
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+. $(brew --prefix)/etc/bash_completion
+fi
+
+## Homebrew pyenv
+export PYENV_VERSION=2.7.13
+export PYENV_ROOT=/usr/local/var/pyenv
+
+export WORKON_HOME="$HOME/.virtualenvs"
+export PROJECT_HOME="$HOME/Projects"
+
+## Homebrew rbenv
+export RBENV_VERSION=2.4.1
+export RBENV_ROOT=/usr/local/var/rbenv
+
+## Java
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/1.8.0/Contents/Home"
+export PATH="$JAVA_HOME/bin:$PATH"
+
+## Maven
+export M2_HOME="/usr/local/Cellar/maven/current/libexec"
+export MAVEN_OPTS="-Xmx512m"
+export PATH="$M2_HOME/bin:$PATH"
+
+## Ant
+export ANT_HOME="/usr/local/Cellar/ant/current/libexec"
+export PATH="$ANT_HOME/bin:$PATH"
+
+## Node
+# export NPM_HOME="/usr/local/share/npm"
+# export NODE_PATH="$NPM_HOME/lib/node_modules"
+# export PATH="$NPM_HOME/bin:$PATH"
+
+## VMware Fusion
+export VMWAREVM_HOME="$HOME/Documents/Virtual Machines/VMware"
+export PATH="$PATH:/Applications/VMware Fusion.app/Contents/Library"
+
+## Vagrant
+export VAGRANT_DEFAULT_PROVIDER="virtualbox"
+export VAGRANT_VMWARE_CLONE_DIRECTORY="${VMWAREVM_HOME}"
 
 ## Homebrew pyenv init
 if which pyenv > /dev/null; then
