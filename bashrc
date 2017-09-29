@@ -105,6 +105,9 @@ export RBENV_ROOT=/usr/local/var/rbenv
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/1.8.0/Contents/Home"
 export PATH="$JAVA_HOME/bin:$PATH"
 
+## Groovy
+export GROOVY_HOME=/usr/local/opt/groovy/libexec
+
 ## Maven
 export M2_HOME="/usr/local/Cellar/maven/current/libexec"
 export MAVEN_OPTS="-Xmx512m"
