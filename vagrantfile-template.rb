@@ -72,7 +72,7 @@ Vagrant.configure('2') do |config|
                 if host_config['numvcpus']
                     vmware.vmx['numvcpus'] = host_config['numvcpus']
                 end
-                vmware.vmx['virtualHW.version'] = '11'
+                vmware.vmx['virtualHW.version'] = '12'
                 vmware.vmx['vhv.enable'] = 'TRUE'
                 vmware.gui = false
             end

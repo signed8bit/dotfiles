@@ -1,6 +1,7 @@
 [user]
 	name = Matthew Montgomery
 	email = matthew@signed8bit.com
+	signingkey = 9DF18EF6F9CA222B
 [github]
 	user = signed8bit
 [core]

@@ -1,27 +1,87 @@
-## General Setup #########################################################################
+##
+# General
+##
 
-## Prompt
+# Prompt
 if [ -f /usr/local/share/liquidprompt ]; then
 	. /usr/local/share/liquidprompt
 fi
 
-## Color
+# Color
 export CLICOLOR='true'
 
-## Editor
+# Editor
 export EDITOR="bbedit --wait --resume"
 
-## Path
+# Path
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin"
 
-## Set a more reasonable file limit
+# Reasonable file limit
 ulimit -n 1024
 
-## Load SSH identities
+# Load SSH identities
 ssh-add -K ~/.ssh/id_rsa 2>/dev/null;
 
+# Homebrew Bash Completion
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+. $(brew --prefix)/etc/bash_completion
+fi
 
-## Aliases ###############################################################################
+##
+# Exports
+##
+
+# GPG
+export GPG_TTY=$(tty)
+
+# Homebrew pyenv
+export PYENV_VERSION=2.7.13
+export PYENV_ROOT=/usr/local/var/pyenv
+
+export WORKON_HOME="$HOME/.virtualenvs"
+export PROJECT_HOME="$HOME/Projects"
+
+# Homebrew rbenv
+export RBENV_VERSION=2.4.0
+export RBENV_ROOT=/usr/local/var/rbenv
+
+# Java
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/1.8.0/Contents/Home"
+export PATH="$JAVA_HOME/bin:$PATH"
+
+# Groovy
+export GROOVY_HOME=/usr/local/opt/groovy/libexec
+
+# Maven
+export M2_HOME="/usr/local/Cellar/maven/current/libexec"
+export MAVEN_OPTS="-Xmx512m"
+export PATH="$M2_HOME/bin:$PATH"
+
+# Ant
+export ANT_HOME="/usr/local/Cellar/ant/current/libexec"
+export PATH="$ANT_HOME/bin:$PATH"
+
+# Node
+export NPM_HOME="/usr/local/share/npm"
+export NODE_PATH="$NPM_HOME/lib/node_modules"
+export PATH="$NPM_HOME/bin:$PATH"
+
+# VMware Fusion
+export VMWAREVM_HOME="$HOME/Documents/Virtual Machines/VMware"
+export PATH="$PATH:/Applications/VMware Fusion.app/Contents/Library"
+
+## Vagrant
+export VAGRANT_DEFAULT_PROVIDER="vmware_fusion"
+export VAGRANT_VMWARE_CLONE_DIRECTORY="${VMWAREVM_HOME}"
+
+## AWS CLI Scripting
+export PATH="$HOME/Projects/scripting/aws-cli-scripting/bin:$PATH"
+export EC2_SSH_USER="ubuntu"
+export EC2_SSH_PROFILE="default"
+
+##
+# Aliases
+##
 
 alias os="openstack"
 alias cls="clear"
@@ -40,8 +100,8 @@ alias grepjars="find ./ -name \"*.jar\" -exec echo {} \; -exec jar -tf {} \; | g
 
 alias sync-music="rsync -avz --include '*/' --include '*.mp3' --include '*.m4a' --exclude '*' /Volumes/Media/Music/ /Volumes/MUSIC/"
 
-## Quick way to rebuild the Launch Services database and get rid
-## of duplicates in the "Open With" submenu.
+# Quick way to rebuild the Launch Services database and get rid
+# of duplicates in the "Open With" submenu.
 alias fixopenwith="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user; killall Finder"
 
 #Tip: add 'alias cd="pushd &> /dev/null"' to your .bashrc; when you cd to a #directory you'll always be able to 'popd' back where you started.
@@ -49,7 +109,7 @@ alias fixopenwith="/System/Library/Frameworks/CoreServices.framework/Frameworks/
 # Remove all Docker containers that have exited
 alias docker-purge="docker rm -v $(docker ps -a -q -f status=exited)"
 
-## OpenStack
+# OpenStack
 run_osapi() {
     local config_dir=${HOME}/.openstack
     local path_to_file=${config_dir}/${1}-openrc.sh
@@ -66,7 +126,7 @@ run_osapi() {
 
 alias osapi=run_osapi
 
-## Gerrit Setup
+# Gerrit Setup
 run_gerritsetup() {
     git remote add gerrit `git remote -v | grep -m 1 -o 'ssh://.* '` &&
     git review -s
@@ -82,59 +142,33 @@ run_vgsetup() {
 
 alias vgsetup=run_vgsetup
 
+## Extract a source RPM
 
-## Development ###########################################################################
+run_esrpm() {
+    if [ -f "${1}" ]; then
+        echo "Extracting ${1}..."
+        file_name=$(basename "${1}")
+        dir_name="${file_name%.*}"
 
-## Homebrew Bash Completion
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-. $(brew --prefix)/etc/bash_completion
-fi
+        if [ ! -d "${dir_name}" ]; then
+            mkdir ${dir_name}
+            cd ${dir_name} && rpm2cpio.pl ../${1} | cpio -i -d
+            cd ../
+        fi
+    fi
+}
 
-## Homebrew pyenv
-export PYENV_VERSION=2.7.13
-export PYENV_ROOT=/usr/local/var/pyenv
+alias esrpm=run_esrpm
 
-export WORKON_HOME="$HOME/.virtualenvs"
-export PROJECT_HOME="$HOME/Projects"
+##
+# Other
+##
 
-## Homebrew rbenv
-export RBENV_VERSION=2.4.1
-export RBENV_ROOT=/usr/local/var/rbenv
-
-## Java
-export JAVA_HOME="/Library/Java/JavaVirtualMachines/1.8.0/Contents/Home"
-export PATH="$JAVA_HOME/bin:$PATH"
-
-## Groovy
-export GROOVY_HOME=/usr/local/opt/groovy/libexec
-
-## Maven
-export M2_HOME="/usr/local/Cellar/maven/current/libexec"
-export MAVEN_OPTS="-Xmx512m"
-export PATH="$M2_HOME/bin:$PATH"
-
-## Ant
-export ANT_HOME="/usr/local/Cellar/ant/current/libexec"
-export PATH="$ANT_HOME/bin:$PATH"
-
-## Node
-# export NPM_HOME="/usr/local/share/npm"
-# export NODE_PATH="$NPM_HOME/lib/node_modules"
-# export PATH="$NPM_HOME/bin:$PATH"
-
-## VMware Fusion
-export VMWAREVM_HOME="$HOME/Documents/Virtual Machines/VMware"
-export PATH="$PATH:/Applications/VMware Fusion.app/Contents/Library"
-
-## Vagrant
-export VAGRANT_DEFAULT_PROVIDER="virtualbox"
-export VAGRANT_VMWARE_CLONE_DIRECTORY="${VMWAREVM_HOME}"
-
-## Homebrew pyenv init
+# Homebrew pyenv init
 if which pyenv > /dev/null; then
     eval "$(pyenv init -)"
     pyenv virtualenvwrapper
 fi
 
-## Homebrew rbenv init
+# Homebrew rbenv init
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
