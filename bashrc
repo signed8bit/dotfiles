@@ -109,7 +109,7 @@ alias fixopenwith="/System/Library/Frameworks/CoreServices.framework/Frameworks/
 # Remove all Docker containers that have exited
 alias docker-purge="docker rm -v $(docker ps -a -q -f status=exited)"
 
-# OpenStack
+# OpenStack API Setup
 run_osapi() {
     local config_dir=${HOME}/.openstack
     local path_to_file=${config_dir}/${1}-openrc.sh
@@ -143,7 +143,6 @@ run_vgsetup() {
 alias vgsetup=run_vgsetup
 
 ## Extract a source RPM
-
 run_esrpm() {
     if [ -f "${1}" ]; then
         echo "Extracting ${1}..."
