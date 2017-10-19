@@ -35,18 +35,23 @@ fi
 export GPG_TTY=$(tty)
 
 # Homebrew pyenv
-export PYENV_VERSION=2.7.13
+export PYENV_VERSION=2.7.14
 export PYENV_ROOT=/usr/local/var/pyenv
 
 export WORKON_HOME="$HOME/.virtualenvs"
 export PROJECT_HOME="$HOME/Projects"
 
 # Homebrew rbenv
-export RBENV_VERSION=2.4.0
+export RBENV_VERSION=2.4.1
 export RBENV_ROOT=/usr/local/var/rbenv
 
+# Homebrew OpenSSL
+export LDFLAGS=-L/usr/local/opt/openssl/lib
+export CPPFLAGS=-I/usr/local/opt/openssl/include
+export PKG_CONFIG_PATH=/usr/local/opt/openssl/lib/pkgconfig
+
 # Java
-export JAVA_HOME="/Library/Java/JavaVirtualMachines/1.8.0/Contents/Home"
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home"
 export PATH="$JAVA_HOME/bin:$PATH"
 
 # Groovy
