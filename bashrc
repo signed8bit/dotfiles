@@ -51,7 +51,7 @@ export CPPFLAGS=-I/usr/local/opt/openssl/include
 export PKG_CONFIG_PATH=/usr/local/opt/openssl/lib/pkgconfig
 
 # Java
-export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home"
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_152.jdk/Contents/Home"
 export PATH="$JAVA_HOME/bin:$PATH"
 
 # Groovy
@@ -76,7 +76,8 @@ export VMWAREVM_HOME="$HOME/Documents/Virtual Machines/VMware"
 export PATH="$PATH:/Applications/VMware Fusion.app/Contents/Library"
 
 ## Vagrant
-export VAGRANT_DEFAULT_PROVIDER="vmware_fusion"
+#export VAGRANT_DEFAULT_PROVIDER="vmware_fusion"
+export VAGRANT_DEFAULT_PROVIDER="virtualbox"
 export VAGRANT_VMWARE_CLONE_DIRECTORY="${VMWAREVM_HOME}"
 
 ## AWS CLI Scripting
@@ -100,6 +101,7 @@ alias start-work="sudo netloc work && sudo ifconfig en1 down && sudo ifconfig en
 alias stop-work="sudo netloc home"
 alias fix-work="sudo ifconfig en1 down && sudo ifconfig en1 up"
 alias sha256sum="shasum -a 256"
+alias macerate-dev="macerate -c ~/.config/macerate/dev.yml"
 
 alias grepjars="find ./ -name \"*.jar\" -exec echo {} \; -exec jar -tf {} \; | grep -e \".jar\" -e $1"
 
