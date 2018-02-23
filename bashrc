@@ -133,13 +133,20 @@ run_osapi() {
 
 alias osapi=run_osapi
 
-# Gerrit Setup
+## Gerrit Setup
 run_gerritsetup() {
     git remote add gerrit `git remote -v | grep -m 1 -o 'ssh://.* '` &&
     git review -s
 }
 
 alias gerritsetup=run_gerritsetup
+
+## Gerrit Development Install
+run_gerritdev() {
+    java -jar ${1} init --install-all-plugins --dev --batch -d ${1%.*}
+}
+
+alias gerritdev=run_gerritdev
 
 ## Vagrant Setup
 run_vgsetup() {
