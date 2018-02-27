@@ -76,8 +76,7 @@ export VMWAREVM_HOME="$HOME/Documents/Virtual Machines/VMware"
 export PATH="$PATH:/Applications/VMware Fusion.app/Contents/Library"
 
 ## Vagrant
-#export VAGRANT_DEFAULT_PROVIDER="vmware_fusion"
-export VAGRANT_DEFAULT_PROVIDER="virtualbox"
+export VAGRANT_DEFAULT_PROVIDER="vmware_fusion"
 export VAGRANT_VMWARE_CLONE_DIRECTORY="${VMWAREVM_HOME}"
 
 ## AWS CLI Scripting
