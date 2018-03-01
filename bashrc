@@ -20,7 +20,7 @@ export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin"
 ulimit -n 1024
 
 # Load SSH identities
-ssh-add -K ~/.ssh/id_rsa 2>/dev/null;
+ssh-add -K ~/.ssh/*_rsa 2>/dev/null;
 
 # Homebrew Bash Completion
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
