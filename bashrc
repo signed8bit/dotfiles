@@ -4,8 +4,11 @@
 
 # Prompt
 if [ -f /usr/local/share/liquidprompt ]; then
-	. /usr/local/share/liquidprompt
+	[[ $- = *i* ]] && source /usr/local/share/liquidprompt
 fi
+
+# Fixes RE error: illegal byte sequence (https://stackoverflow.com/questions/19242275/re-error-illegal-byte-sequence-on-mac-os-x/23584470#23584470)
+export LC_CTYPE=C
 
 # Color
 export CLICOLOR='true'
@@ -51,7 +54,7 @@ export CPPFLAGS=-I/usr/local/opt/openssl/include
 export PKG_CONFIG_PATH=/usr/local/opt/openssl/lib/pkgconfig
 
 # Java
-export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_152.jdk/Contents/Home"
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/Java8/Contents/Home"
 export PATH="$JAVA_HOME/bin:$PATH"
 
 # Groovy
