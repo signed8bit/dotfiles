@@ -23,6 +23,7 @@
   nuke = !"git reset --hard; git clean -dxf"
   ugh = !"git commit -a --amend --no-edit"
   umod = !"git submodule update; git clean -fdx"
+  prb = !"git pr \"$1\" upstream; git rebase upstream/master"
 [http]
 	cookiefile = /Users/Mattmont/.gitcookies
 [push]
