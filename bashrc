@@ -7,9 +7,6 @@ if [ -f /usr/local/share/liquidprompt ]; then
 	[[ $- = *i* ]] && source /usr/local/share/liquidprompt
 fi
 
-# Fixes RE error: illegal byte sequence (https://stackoverflow.com/questions/19242275/re-error-illegal-byte-sequence-on-mac-os-x/23584470#23584470)
-export LC_CTYPE=C
-
 # Color
 export CLICOLOR='true'
 
@@ -23,7 +20,8 @@ export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin"
 ulimit -n 1024
 
 # Load SSH identities
-ssh-add -K ~/.ssh/*_rsa 2>/dev/null;
+# ssh-add -K ~/.ssh/*_rsa 2>/dev/null;
+ssh-add -K ~/.ssh/id_rsa 2>/dev/null;
 
 # Homebrew Bash Completion
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
@@ -38,7 +36,7 @@ fi
 export GPG_TTY=$(tty)
 
 # Homebrew pyenv
-export PYENV_VERSION=2.7.14
+export PYENV_VERSION=2.7.15
 export PYENV_ROOT=/usr/local/var/pyenv
 
 export WORKON_HOME="$HOME/.virtualenvs"
@@ -77,6 +75,7 @@ export PATH="$NPM_HOME/bin:$PATH"
 # VMware Fusion
 export VMWAREVM_HOME="$HOME/Documents/Virtual Machines/VMware"
 export PATH="$PATH:/Applications/VMware Fusion.app/Contents/Library"
+export PATH="$PATH:/Applications/VMware Fusion.app/Contents/Library/VMware OVF Tool"
 
 ## Vagrant
 export VAGRANT_DEFAULT_PROVIDER="vmware_fusion"
