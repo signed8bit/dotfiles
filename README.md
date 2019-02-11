@@ -1,7 +1,7 @@
 dotfiles
 ========
 
-My collection of dot files for OS X systems.
+My collection of dot files for macOS systems.
 
 To use them:
 
