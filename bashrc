@@ -36,7 +36,6 @@ fi
 export GPG_TTY=$(tty)
 
 # Homebrew pyenv
-# export PYENV_VERSION=2.7.15 (See pre-user seeting for global preference)
 export PYENV_ROOT=/usr/local/var/pyenv
 
 export WORKON_HOME="$HOME/.virtualenvs"
@@ -52,7 +51,7 @@ export CPPFLAGS=-I/usr/local/opt/openssl/include
 export PKG_CONFIG_PATH=/usr/local/opt/openssl/lib/pkgconfig
 
 # Java
-export JAVA_HOME="/Library/Java/JavaVirtualMachines/1.8.0/Contents/Home"
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/Java8/Contents/Home"
 export PATH="$JAVA_HOME/bin:$PATH"
 
 # Groovy
