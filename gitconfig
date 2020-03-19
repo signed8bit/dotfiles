@@ -24,6 +24,7 @@
   ugh = !"git commit -a --amend --no-edit"
   umod = !"git submodule update; git clean -fdx"
   prb = !"git pr \"$1\" upstream; git rebase upstream/master"
+	logline = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 [http]
 	cookiefile = /Users/Mattmont/.gitcookies
 [push]

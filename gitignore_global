@@ -12,6 +12,7 @@
 *.iml
 .vagrant
 .project
+.python-version
 
 ##
 # Gerrit Specific

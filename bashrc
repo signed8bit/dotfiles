@@ -2,6 +2,10 @@
 # General
 ##
 
+# Set unlimited history
+export HISTSIZE=-1 
+export HISTFILESIZE=-1
+
 # Prompt
 if [ -f /usr/local/share/liquidprompt ]; then
 	[[ $- = *i* ]] && source /usr/local/share/liquidprompt
@@ -21,6 +25,7 @@ ulimit -n 1024
 
 # Load SSH identities
 # ssh-add -K ~/.ssh/*_rsa 2>/dev/null;
+ssh-add -K ~/.ssh/id_ed25519 2>/dev/null;
 ssh-add -K ~/.ssh/id_rsa 2>/dev/null;
 
 # Homebrew Bash Completion
@@ -51,11 +56,11 @@ export CPPFLAGS=-I/usr/local/opt/openssl/include
 export PKG_CONFIG_PATH=/usr/local/opt/openssl/lib/pkgconfig
 
 # Java
-export JAVA_HOME="/Library/Java/JavaVirtualMachines/Java8/Contents/Home"
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-11.0.6.jdk/Contents/Home"
 export PATH="$JAVA_HOME/bin:$PATH"
 
 # Groovy
-export GROOVY_HOME=/usr/local/opt/groovy/libexec
+export GROOVY_HOME=/usr/local/opt/groovysdk/libexec
 
 # Maven
 export M2_HOME="/usr/local/Cellar/maven/current/libexec"
@@ -67,9 +72,9 @@ export ANT_HOME="/usr/local/Cellar/ant/current/libexec"
 export PATH="$ANT_HOME/bin:$PATH"
 
 # Node
-export NPM_HOME="/usr/local/share/npm"
-export NODE_PATH="$NPM_HOME/lib/node_modules"
-export PATH="$NPM_HOME/bin:$PATH"
+# export NPM_HOME="/usr/local/share/npm"
+# export NODE_PATH="$NPM_HOME/lib/node_modules"
+# export PATH="$NPM_HOME/bin:$PATH"
 
 # VMware Fusion
 export VMWAREVM_HOME="$HOME/Documents/Virtual Machines/VMware"
@@ -90,7 +95,10 @@ export EC2_SSH_PROFILE="default"
 ##
 
 alias os="openstack"
+alias kc="kubectl"
+alias bz="bazel"
 alias cls="clear"
+alias mvns="mvn -Dmaven.test.skip=true"
 alias rm="rm -i"
 alias bb="bbedit"
 alias recent="ls -lthr | tail"
@@ -99,9 +107,15 @@ alias vg="vagrant"
 alias dpaste="curl -F 'content=<-' http://dpaste.cisco.com/api/"
 alias start-work="sudo netloc work && sudo ifconfig en1 down && sudo ifconfig en1 up"
 alias stop-work="sudo netloc home"
-alias fix-work="sudo ifconfig en1 down && sudo ifconfig en1 up"
+alias fix-work="sudo ifconfig en12 down && sudo ifconfig en12 up"
 alias sha256sum="shasum -a 256"
 alias macerate-dev="macerate -c ~/.config/macerate/dev.yml"
+alias dbash="docker run -it --entrypoint /bin/bash"
+
+run_kbash() {
+	kubectl exec -it ${1} -- /bin/bash
+}
+alias kbash=run_kbash
 
 alias grepjars="find ./ -name \"*.jar\" -exec echo {} \; -exec jar -tf {} \; | grep -e \".jar\" -e $1"
 
