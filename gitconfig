@@ -1,12 +1,12 @@
 [user]
 	name = Matthew Montgomery
-	email = matthew@signed8bit.com
+	email = mattmont@cisco.com
 	signingkey = 9DF18EF6F9CA222B
 [github]
 	user = signed8bit
 [core]
 	excludesfile = ~/.gitignore_global
-	autocrlf = false
+	autocrlf = input
 [diff]
     tool = "bbdiff"
 [difftool]
@@ -24,8 +24,14 @@
   ugh = !"git commit -a --amend --no-edit"
   umod = !"git submodule update; git clean -fdx"
   prb = !"git pr \"$1\" upstream; git rebase upstream/master"
-	logline = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  logline = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 [http]
 	cookiefile = /Users/Mattmont/.gitcookies
 [push]
 	default = matching
+[url "ssh://git@bitbucket-eng-sjc1.cisco.com/"]
+	insteadOf = https://bitbucket-eng-sjc1.cisco.com/bitbucket/scm/
+[url "ssh://git@wwwin-github.cisco.com/"]
+	insteadOf = https://wwwin-github.cisco.com/
+[pull]
+	rebase = false

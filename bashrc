@@ -8,7 +8,7 @@ export HISTFILESIZE=-1
 
 # Prompt
 if [ -f /usr/local/share/liquidprompt ]; then
-	[[ $- = *i* ]] && source /usr/local/share/liquidprompt
+    [[ $- = *i* ]] && source /usr/local/share/liquidprompt
 fi
 
 # Color
@@ -18,7 +18,7 @@ export CLICOLOR='true'
 export EDITOR="bbedit --wait --resume"
 
 # Path
-export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin"
+export PATH="~/.go/bin/:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin"
 
 # Reasonable file limit
 ulimit -n 1024
@@ -40,23 +40,25 @@ fi
 # GPG
 export GPG_TTY=$(tty)
 
-# Homebrew pyenv
-export PYENV_ROOT=/usr/local/var/pyenv
-
-export WORKON_HOME="$HOME/.virtualenvs"
-export PROJECT_HOME="$HOME/Projects"
+# Homebrew gnubin
+export PATH="/usr/local/opt/make/libexec/gnubin:$PATH" 
 
 # Homebrew rbenv
 export RBENV_VERSION=2.4.1
 export RBENV_ROOT=/usr/local/var/rbenv
 
-# Homebrew OpenSSL
-export LDFLAGS=-L/usr/local/opt/openssl/lib
-export CPPFLAGS=-I/usr/local/opt/openssl/include
-export PKG_CONFIG_PATH=/usr/local/opt/openssl/lib/pkgconfig
+# Homebrew build changes
+export LDFLAGS="-L/usr/local/opt/openssl/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/zlib/lib -L/usr/local/opt/bzip2/lib"
+export CPPFLAGS="-I/usr/local/opt/openssl/include -I/usr/local/opt/readline/include -I/usr/local/opt/zlib/include -I/usr/local/opt/bzip2/include"
+export PKG_CONFIG_PATH="/usr/local/opt/openssl/lib/pkgconfig:/usr/local/opt/readline/lib/pkgconfig:/usr/local/opt/zlib/lib/pkgconfig:/usr/local/opt/bzip2/lib/pkgconfig"
+
+# Go
+export GOPATH=/Users/$USER/go
+export PATH=$GOPATH/bin:$PATH
 
 # Java
-export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-11.0.6.jdk/Contents/Home"
+# export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-11.0.9.jdk/Contents/Home"
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_271.jdk/Contents/Home"
 export PATH="$JAVA_HOME/bin:$PATH"
 
 # Groovy
@@ -90,6 +92,13 @@ export PATH="$HOME/Projects/scripting/aws-cli-scripting/bin:$PATH"
 export EC2_SSH_USER="ubuntu"
 export EC2_SSH_PROFILE="default"
 
+## Intersight Development Environment
+export GO111MODULE=auto
+source $HOME/intersight-env.sh
+
+## Bitbucket Development Environment
+export PATH="/Users/Mattmont/Projects/bitbucket/atlassian-plugin-sdk/bin:/Users/Mattmont/Projects/bitbucket/atlassian-plugin-sdk/apache-maven-*/bin:$PATH"
+
 ##
 # Aliases
 ##
@@ -111,11 +120,17 @@ alias fix-work="sudo ifconfig en12 down && sudo ifconfig en12 up"
 alias sha256sum="shasum -a 256"
 alias macerate-dev="macerate -c ~/.config/macerate/dev.yml"
 alias dbash="docker run -it --entrypoint /bin/bash"
+alias jump="ssh -A jump.ci.ciscolabs.com"
 
-run_kbash() {
-	kubectl exec -it ${1} -- /bin/bash
+run_kcbash() {
+    kubectl exec -it ${1} -- /bin/bash
 }
-alias kbash=run_kbash
+alias kcbash=run_kcbash
+
+run_kcsh() {
+    kubectl exec -it ${1} -- /bin/sh
+}
+alias kcsh=run_kcsh
 
 alias grepjars="find ./ -name \"*.jar\" -exec echo {} \; -exec jar -tf {} \; | grep -e \".jar\" -e $1"
 
@@ -186,16 +201,3 @@ run_esrpm() {
 }
 
 alias esrpm=run_esrpm
-
-##
-# Other
-##
-
-# Homebrew pyenv init
-if which pyenv > /dev/null; then
-    eval "$(pyenv init -)"
-    pyenv virtualenvwrapper
-fi
-
-# Homebrew rbenv init
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
