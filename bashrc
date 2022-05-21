@@ -7,9 +7,9 @@ export HISTSIZE=-1
 export HISTFILESIZE=-1
 
 # Prompt
-if [ -f /usr/local/share/liquidprompt ]; then
-    [[ $- = *i* ]] && source /usr/local/share/liquidprompt
-fi
+if [ -f /opt/homebrew/share/liquidprompt ]; then
+	. /opt/homebrew/share/liquidprompt
+fi    
 
 # Color
 export CLICOLOR='true'
@@ -18,20 +18,17 @@ export CLICOLOR='true'
 export EDITOR="bbedit --wait --resume"
 
 # Path
-export PATH="~/.go/bin/:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin"
+export PATH="~/.go/bin/:/usr/local/opt/gnu-sed/libexec/gnubin:/opt/homebrew/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin"
 
 # Reasonable file limit
 ulimit -n 1024
 
 # Load SSH identities
-# ssh-add -K ~/.ssh/*_rsa 2>/dev/null;
 ssh-add -K ~/.ssh/id_ed25519 2>/dev/null;
 ssh-add -K ~/.ssh/id_rsa 2>/dev/null;
 
 # Homebrew Bash Completion
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-. $(brew --prefix)/etc/bash_completion
-fi
+[[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh" 
 
 ##
 # Exports
@@ -48,9 +45,9 @@ export RBENV_VERSION=2.4.1
 export RBENV_ROOT=/usr/local/var/rbenv
 
 # Homebrew build changes
-export LDFLAGS="-L/usr/local/opt/openssl/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/zlib/lib -L/usr/local/opt/bzip2/lib"
-export CPPFLAGS="-I/usr/local/opt/openssl/include -I/usr/local/opt/readline/include -I/usr/local/opt/zlib/include -I/usr/local/opt/bzip2/include"
-export PKG_CONFIG_PATH="/usr/local/opt/openssl/lib/pkgconfig:/usr/local/opt/readline/lib/pkgconfig:/usr/local/opt/zlib/lib/pkgconfig:/usr/local/opt/bzip2/lib/pkgconfig"
+# export LDFLAGS="-L/usr/local/opt/openssl/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/zlib/lib -L/usr/local/opt/bzip2/lib"
+# export CPPFLAGS="-I/usr/local/opt/openssl/include -I/usr/local/opt/readline/include -I/usr/local/opt/zlib/include -I/usr/local/opt/bzip2/include"
+# export PKG_CONFIG_PATH="/usr/local/opt/openssl/lib/pkgconfig:/usr/local/opt/readline/lib/pkgconfig:/usr/local/opt/zlib/lib/pkgconfig:/usr/local/opt/bzip2/lib/pkgconfig"
 
 # Go
 export GOPATH=/Users/$USER/go
@@ -58,20 +55,20 @@ export PATH=$GOPATH/bin:$PATH
 
 # Java
 # export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-11.0.9.jdk/Contents/Home"
-export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_271.jdk/Contents/Home"
-export PATH="$JAVA_HOME/bin:$PATH"
+# export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_271.jdk/Contents/Home"
+# export PATH="$JAVA_HOME/bin:$PATH"
 
 # Groovy
-export GROOVY_HOME=/usr/local/opt/groovysdk/libexec
+# export GROOVY_HOME=/usr/local/opt/groovysdk/libexec
 
 # Maven
-export M2_HOME="/usr/local/Cellar/maven/current/libexec"
-export MAVEN_OPTS="-Xmx512m"
-export PATH="$M2_HOME/bin:$PATH"
+# export M2_HOME="/usr/local/Cellar/maven/current/libexec"
+# export MAVEN_OPTS="-Xmx512m"
+# export PATH="$M2_HOME/bin:$PATH"
 
 # Ant
-export ANT_HOME="/usr/local/Cellar/ant/current/libexec"
-export PATH="$ANT_HOME/bin:$PATH"
+# export ANT_HOME="/usr/local/Cellar/ant/current/libexec"
+# export PATH="$ANT_HOME/bin:$PATH"
 
 # Node
 # export NPM_HOME="/usr/local/share/npm"
@@ -79,25 +76,18 @@ export PATH="$ANT_HOME/bin:$PATH"
 # export PATH="$NPM_HOME/bin:$PATH"
 
 # VMware Fusion
-export VMWAREVM_HOME="$HOME/Documents/Virtual Machines/VMware"
-export PATH="$PATH:/Applications/VMware Fusion.app/Contents/Library"
-export PATH="$PATH:/Applications/VMware Fusion.app/Contents/Library/VMware OVF Tool"
+# export VMWAREVM_HOME="$HOME/Documents/Virtual Machines/VMware"
+# export PATH="$PATH:/Applications/VMware Fusion.app/Contents/Library"
+# export PATH="$PATH:/Applications/VMware Fusion.app/Contents/Library/VMware OVF Tool"
 
 ## Vagrant
-export VAGRANT_DEFAULT_PROVIDER="vmware_fusion"
-export VAGRANT_VMWARE_CLONE_DIRECTORY="${VMWAREVM_HOME}"
+# export VAGRANT_DEFAULT_PROVIDER="vmware_fusion"
+# export VAGRANT_VMWARE_CLONE_DIRECTORY="${VMWAREVM_HOME}"
 
 ## AWS CLI Scripting
-export PATH="$HOME/Projects/scripting/aws-cli-scripting/bin:$PATH"
-export EC2_SSH_USER="ubuntu"
-export EC2_SSH_PROFILE="default"
-
-## Intersight Development Environment
-export GO111MODULE=auto
-source $HOME/intersight-env.sh
-
-## Bitbucket Development Environment
-export PATH="/Users/Mattmont/Projects/bitbucket/atlassian-plugin-sdk/bin:/Users/Mattmont/Projects/bitbucket/atlassian-plugin-sdk/apache-maven-*/bin:$PATH"
+# export PATH="$HOME/Projects/scripting/aws-cli-scripting/bin:$PATH"
+# export EC2_SSH_USER="ubuntu"
+# export EC2_SSH_PROFILE="default"
 
 ##
 # Aliases
